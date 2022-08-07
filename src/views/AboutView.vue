@@ -2,40 +2,69 @@
   <div class="about">
     <van-collapse v-model="activeNames">
       <van-collapse-item title="详细信息" name="1">
-        <van-cell-group>
-          <van-cell title="巡视反馈重点方面" :value="rowData.aspect" readonly />
-          <van-cell
-            title="巡视反馈重点内容"
-            :value="rowData.content"
+        <van-field
+          label="巡视反馈重点方面"
+          :value="rowData.patrolFeedbackKeyAspect"
+          readonly
+          type="textarea"
+          rows="3"
+        />
+        <van-field
+          label="巡视反馈重点内容"
+          :value="rowData.patrolFeedbackKeyContent"
+          readonly
+          type="textarea"
+          rows="3"
+        />
+        <van-field
+          label="巡视反馈具体问题"
+          :value="rowData.patrolFeedbackKeyProblem"
+          readonly
+          type="textarea"
+          rows="3"
+        />
+        <van-field
+          label="整改计划"
+          :value="rowData.plan"
+          readonly
+          type="textarea"
+        />
+        <template v-if="rowData.type === 'view'">
+          <van-field label="上周进度" :value="rowData.lastProgress" readonly />
+          <van-field
+            label="整改进度"
+            :value="rowData.currentProgress"
             readonly
           />
-          <van-cell
-            title="巡视反馈具体问题"
-            :value="rowData.problem"
+          <van-field
+            label="整改描述"
+            :value="rowData.rectificationDescription"
             readonly
           />
-          <van-cell title="整改计划" :value="rowData.plan" readonly />
-          <template v-if="rowData.type === 'view'">
-            <van-cell title="上周进度" :value="rowData.lastProgress" readonly />
-            <van-cell
-              title="整改进度"
-              :value="rowData.currentProgress"
-              readonly
-            />
-            <van-cell title="整改描述" :value="rowData.description" readonly />
-          </template>
-          <van-cell title="责任领导" :value="rowData.corpLeader" readonly />
-          <van-cell title="分管领导" :value="rowData.aspect" readonly />
-          <van-cell
-            title="整改牵头部门/负责人"
-            :value="rowData.aspect"
-            readonly
-          />
-          <van-cell title="整改时限" :value="rowData.aspect" readonly />
-        </van-cell-group>
+        </template>
+        <van-field
+          label="责任领导"
+          :value="rowData.corporationLeader"
+          readonly
+        />
+        <van-field label="分管领导" :value="rowData.aspect" readonly />
+        <van-field
+          label="整改牵头部门/负责人"
+          :value="rowData.supervisorName"
+          readonly
+          type="textarea"
+          rows="3"
+        />
+        <van-field
+          label="整改时限"
+          :value="rowData.rectificationTime"
+          readonly
+          type="textarea"
+          rows="3"
+        />
       </van-collapse-item>
       <van-collapse-item
-        title="整改进度录入"
+        label="整改进度录入"
         name="2"
         v-if="rowData.type === 'edit'"
       >
@@ -58,7 +87,7 @@
             ]"
           />
           <van-field
-            v-model="form.description"
+            v-model="form.rectificationDescription"
             rows="3"
             autosize
             label="整改描述"

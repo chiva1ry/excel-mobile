@@ -14,7 +14,7 @@
         >
           <van-card
             num="2"
-            :desc="item.plan"
+            :desc="item.rectificationPlan"
             title="整改计划"
             class="goods-card"
           >
@@ -49,6 +49,8 @@
 </template>
 
 <script>
+import json from "./data.js";
+
 // @ is an alias to /src
 
 export default {
@@ -67,66 +69,11 @@ export default {
       formData: null,
       selectRow: null,
       showEdit: false,
-      tableData: [
-        {
-          planId: 100001,
-          aspect:
-            "巡视反馈重点方面巡视反馈重点方面巡视反馈重点方面巡视反馈重点方面巡视反馈重点方面",
-          content:
-            "巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容巡视反馈重点内容",
-          problem:
-            "巡视反馈具体问题巡视反馈具体问题巡视反馈具体问题巡视反馈具体问题巡视反馈具体问题巡视反馈具体问题巡视反馈具体问题巡视反馈具体问题巡视反馈具体问题巡视反馈具体问题",
-          plan: "整改计划整改计划整改计划整改计划整改计划整改计划整改计划整改计划整改计划整改计划整改计划整改计划",
-          description: "整改描述",
-          corpLeader: "责任领导",
-          branchLeader: "分管领导",
-          department: "整改牵头部门",
-          supervisor: "责任人",
-          lastProgress: 43,
-          currentProgress: 55,
-          rectificationTime: "整改时限",
-          lockStatus: "该数据是否锁定不可编辑",
-          versionName: "版本名称",
-          versionId: "版本id",
-        },
-        {
-          planId: 100002,
-          aspect: "巡视反馈重",
-          content: "巡视反馈重",
-          problem: "巡视反馈具体问题巡",
-          plan: "整改计划",
-          description: null,
-          corpLeader: "责任领导",
-          branchLeader: "分管领导",
-          department: "整改牵头部门",
-          supervisor: "责任人",
-          lastProgress: 100,
-          currentProgress: null,
-          rectificationTime: "整改时限",
-          lockStatus: "该数据是否锁定不可编辑",
-          versionName: "版本名称",
-          versionId: "版本id",
-        },
-        {
-          planId: 100003,
-          aspect: "巡视反馈重",
-          content: "巡视反馈重",
-          problem: "巡视反馈具体问题巡",
-          plan: "整改计划",
-          description: null,
-          corpLeader: "责任领导",
-          branchLeader: "分管领导",
-          department: "整改牵头部门",
-          supervisor: "责任人",
-          lastProgress: null,
-          currentProgress: null,
-          rectificationTime: "整改时限",
-          lockStatus: "该数据是否锁定不可编辑",
-          versionName: "版本名称",
-          versionId: "版本id",
-        },
-      ],
+      tableData: null,
     };
+  },
+  created() {
+    this.tableData = json.data.records;
   },
   mounted() {
     console.log("initialize");
